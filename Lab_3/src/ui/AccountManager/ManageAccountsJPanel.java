@@ -25,8 +25,8 @@ public class ManageAccountsJPanel extends javax.swing.JPanel {
      */
     public ManageAccountsJPanel(JPanel container, AccountDirectory directory) {
         initComponents();
-        this.userProcessContainer = container;
-        this.accountDirectory = directory;
+        userProcessContainer = container;
+        accountDirectory = directory;
         
         populateTable();
     }
@@ -171,8 +171,11 @@ public class ManageAccountsJPanel extends javax.swing.JPanel {
             CardLayout layout = (CardLayout) userProcessContainer.getLayout();
             layout.next(userProcessContainer);
         } else {
-            JOptionPane.showMessageDialog(null, "Account not found, Please check account number and try again.", accountNumber, HEIGHT);
+            JOptionPane.showMessageDialog(null, "Account not found, Please check account number and try again.", "warning", JOptionPane.WARNING_MESSAGE);
         }
+        
+    } else {
+             JOptionPane.showMessageDialog(null, "Please type the number to view", "warning", JOptionPane.WARNING_MESSAGE);
          }
     }//GEN-LAST:event_btnSearchActionPerformed
 
