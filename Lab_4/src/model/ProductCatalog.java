@@ -7,10 +7,7 @@ package model;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Rushabh
- */
+
 public class ProductCatalog {
     
     private ArrayList<Product> productCatalog;

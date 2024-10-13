@@ -1,8 +1,4 @@
-/*
- * AdminWorkAreaJPanel.java
- *
- * Created on October 10, 2008, 8:50 AM
- */
+
 
 package ui.admin;
 
@@ -14,7 +10,7 @@ import ui.LoginScreen;
 
 /**
  *
- * @author  Rushabh
+ * @author  wafflecrag
  */
 public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     JPanel mainWorkArea;
@@ -103,14 +99,25 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageSuppliersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageSuppliersActionPerformed
         // TODO add your handling code here:
-     
+        ManageSuppliers panel = new ManageSuppliers(workArea, supplierDirectory);
+        workArea.add("ManageSupplierAdministrative", panel);
+        CardLayout layout = (CardLayout) workArea.getLayout();
+        layout.next(workArea);
     }//GEN-LAST:event_btnManageSuppliersActionPerformed
 
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
         // TODO add your handling code here:
         
+        mainWorkArea.remove(this);
+        
+        Component[] componentArray = mainWorkArea.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        LoginScreen loginPanel = (LoginScreen) component;
+        loginPanel.populateSupplierCombo();
  
-                
+        CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+        layout.previous(mainWorkArea);
+        
     }//GEN-LAST:event_btnLogOutActionPerformed
 
     @Override
