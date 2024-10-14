@@ -1,4 +1,8 @@
-
+/*
+ * ProductManagerWorkAreaJPanel.java
+ *
+ * Created on October 3, 2008, 8:06 AM
+ */
 package ui.supplier;
 
 import model.Supplier;
@@ -9,7 +13,7 @@ import ui.LoginScreen;
 
 /**
  *
- * @author wafflecrag
+ * @author Rushabh
  */
 public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
 
@@ -71,7 +75,6 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
         });
 
         btnSupplierProfile.setText("Update Profile");
-        btnSupplierProfile.setEnabled(false);
         btnSupplierProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSupplierProfileActionPerformed(evt);
@@ -159,14 +162,18 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
 
     private void PerformanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PerformanceActionPerformed
         // TODO add your handling code here:
-//        ProductReportJPanel prjp = new workArea(userProcessContainer, supplier);
-//        workArea.add("ProductReportJPanelSupplier", prjp);
-//        CardLayout layout = (CardLayout)workArea.getLayout();
-//        layout.next(userProcessContainer);
+          //  ProductReportJPanel prjp = new workArea(userProcessContainer, supplier);
+            //workArea.add("ProductReportJPanelSupplier", prjp);
+           // CardLayout layout = (CardLayout)workArea.getLayout();
+            //layout.next(userProcessContainer);
     }//GEN-LAST:event_PerformanceActionPerformed
 
     private void btnSupplierProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupplierProfileActionPerformed
         // TODO add your handling code here:
+        //UpdateSupplierJPanel usjp = new UpdateSupplierJPanel(workArea, supplier);
+       // workArea.add("UpdateSupplierJPanel", usjp);
+        //CardLayout layout = (CardLayout) workArea.getLayout();
+      //  layout.next(workArea);
     }//GEN-LAST:event_btnSupplierProfileActionPerformed
 
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
@@ -184,6 +191,7 @@ public class SupplierWorkAreaJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_btnLogOutActionPerformed
 
+    @Override
     public String toString() {
         return "Supplier";
     }

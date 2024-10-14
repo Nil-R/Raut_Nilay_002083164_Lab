@@ -8,7 +8,9 @@ package ui.supplier;
 import model.Product;
 import model.Supplier;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 
 
@@ -103,6 +105,10 @@ public class SearchForProductJPanel extends javax.swing.JPanel {
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
         // TODO add your handling code here:
+        String searchQuery = JOptionPane.showInputDialog("Enter Product Name or ID to search:");
+        if (searchQuery != null && !searchQuery.isEmpty()) {
+        DefaultTableModel model = (DefaultTableModel) tblProducts.getModel();
+        model.setRowCount(0); // Clear the table
         
         
 }//GEN-LAST:event_searchButtonActionPerformed

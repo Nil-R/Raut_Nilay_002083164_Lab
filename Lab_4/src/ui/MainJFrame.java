@@ -9,7 +9,10 @@ import java.awt.CardLayout;
 import model.Supplier;
 import model.SupplierDirectory;
 
-
+/**
+ *
+ * @author archil
+ */
 public class MainJFrame extends javax.swing.JFrame {
 
     SupplierDirectory supplierDirectory;
@@ -23,7 +26,7 @@ public class MainJFrame extends javax.swing.JFrame {
         supplierDirectory = new SupplierDirectory();
         setSize(800,600);
         setResizable(false);
-        // populateDemoData();
+       
         
         setLoginScreen();
     
@@ -96,9 +99,11 @@ public class MainJFrame extends javax.swing.JFrame {
     private void setLoginScreen() {
         
         LoginScreen ls = new LoginScreen(mainWorkArea, supplierDirectory);
-        mainWorkArea.add("LoginScreen", ls);
+        mainWorkArea.add("LoginScreen",ls);
         CardLayout layout = (CardLayout) mainWorkArea.getLayout();
         layout.next(mainWorkArea);
+
+       
 
     }
 
@@ -106,11 +111,10 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel mainWorkArea;
     // End of variables declaration//GEN-END:variables
 
-    
     private void populateDemoData(){
+        
         Supplier bestBuy = supplierDirectory.addSupplier();
         bestBuy.setSupplyName("Best Buy");
-        
     }
     
 }

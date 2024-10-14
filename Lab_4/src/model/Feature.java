@@ -5,22 +5,27 @@
  */
 package model;
 
-
+/**
+ *
+ * @author archil
+ */
 public class Feature {
-
     
-    private Product owner ;
+    private Product owner;
     private String name;
     private Object value;
+
     
-    public Feature (Product owner) {
-    this.owner = owner ;
+    public Feature(Product owner){
+        this.owner = owner;
     }
     
-    public Feature (Product owner, String name, Object value) {
+    public Feature(Product owner, String name, Object value){
+        
         this.name = name;
         this.value = value;
     }
+    
     
     public Product getOwner() {
         return owner;
@@ -46,10 +51,12 @@ public class Feature {
         this.value = value;
     }
     
-    @Override 
+    @Override
     public String toString(){
         return name;
     }
+    
+    
 
 }
 
