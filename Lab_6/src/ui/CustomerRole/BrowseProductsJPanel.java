@@ -8,7 +8,7 @@ package ui.CustomerRole;
 import model.Product;
 import model.Supplier;
 import model.SupplierDirectory;
-import ui.SupplierRole.ViewProductDetailJPanel;
+import ui.CustomerRole.ViewProductDetailJPanel;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -301,12 +301,28 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
 
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnProductDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductDetailsActionPerformed
         // TODO add your handling code here:
 
+        int selectedRowIndex = tblProductCatalog.getSelectedRow();
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select the product first");
+            return;
+        }
+        
+        Product product = (Product) tblProductCatalog.getValueAt(selectedRowIndex, 0);
+        ViewProductDetailJPanel vpdp = new ViewProductDetailJPanel(userProcessContainer, product);
+        userProcessContainer.add("SupplierWorkAreaJPanel", vpdp);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
+        
+        
     }//GEN-LAST:event_btnProductDetailsActionPerformed
 
     private void btnCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckOutActionPerformed
