@@ -26,5 +26,9 @@ public class Order {
         this.orderItemList = orderItemList;
     }
     
-    public void addNewOrder
+    public void addNewOrderItem(Product product, double price, int quantity ){
+        OrderItem orderItem = new OrderItem(product, price, quantity);
+        orderItemList.add(orderItem);
+        
+    }
 }

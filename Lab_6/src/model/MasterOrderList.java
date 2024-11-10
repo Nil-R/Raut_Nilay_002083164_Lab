@@ -15,10 +15,7 @@ public class MasterOrderList {
     ArrayList<Order> orderList;
 
     public MasterOrderList() {
-    
-    orderList = new ArrayList<Order>();
-        
-        
+        orderList = new ArrayList<Order>();
     }
 
     public ArrayList<Order> getOrderList() {
