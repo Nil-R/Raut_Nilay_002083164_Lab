@@ -254,7 +254,7 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
                         .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
                         .addComponent(lblTitle)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {spnQuantity, txtSalesPrice});
@@ -294,9 +294,9 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
                     .addComponent(btnRemoveOrderItem)
                     .addComponent(btnModifyQuantity)
                     .addComponent(txtNewQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {jScrollPane1, jScrollPane2});
@@ -342,6 +342,33 @@ public class BrowseProductsJPanel extends javax.swing.JPanel {
 
     private void btnModifyQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyQuantityActionPerformed
         // TODO add your handling code here:
+        
+        int selectedRowIndex = tblCart.getSelectedRow();
+        if (selectedRowIndex < 0) {
+            JOptionPane.showMessageDialog(this, "Please select the order item first");
+            return;
+        }
+        
+        OrderItem item = (OrderItem) tblCart.getValueAt(selectedRowIndex, 0);
+        int quant = 0;
+        
+        try {
+            
+            quant = Integer.parseInt(txtNewQuantity.getText());
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Please check the modified quantity fields.");
+            return;
+        }
+        
+        int oldQuant = item.getQuantity();
+            if (item.getProduct().getAvail() + oldQuant < quant){
+                JOptionPane.showConfirmDialog(this, "Please check the product availability");
+                return;
+            }
+            
+            item.getProduct().setAvail(item.getProduct().getAvail()+oldQuant-quant);
+            item.setQuantity(quant);
 
     }//GEN-LAST:event_btnModifyQuantityActionPerformed
 
