@@ -48,7 +48,7 @@ public class AnalysisHelper {
         }
         int postId = commentWithMaxLikes.getPostId();
         
-        System.out.println("Q2- Post with most likes per comment" + data.getPosts().get(postId).getPostId());
+        System.out.println("Q2- Post with most likes per comment:" + data.getPosts().get(postId).getPostId());
     }
     
     public void getPostWithMostComments(){
@@ -63,7 +63,7 @@ public class AnalysisHelper {
             }
         }
         
-        System.out.println("Q3 - post with most comments" + postWithMostComments.getPostId());
+        System.out.println("Q3 - Post with most comments:" + postWithMostComments.getPostId());
     }
     
     public void getPassiveUsers() {
@@ -104,6 +104,40 @@ public class AnalysisHelper {
         
         for (int i = 0; i < 5; i++) {
             System.out.println(users.get(i) + ", - comment count:" + commentNumbers.get(users.get(i).getId()));
+        }
+    }
+    
+    public void getPassiveAndActiveOverallUsers() {
+        DataStore data  = DataStore.getInstance();
+        HashMap<Integer, Integer> overallNumbers = new HashMap<Integer, Integer>();
+        for (Comment c : data.getComments().values()) {
+            int userId = c.getUserId();
+            if (overallNumbers.containsKey(userId)) {
+                overallNumbers.put(userId, overallNumbers.get(userId) + 1 + c.getLikes());
+            } else {
+                overallNumbers.put(userId, 1 + c.getLikes());
+            }
+        }
+        
+        for (Post p : data.getPosts().values()) {
+            int userId = p.getUserId();
+            if (overallNumbers.containsKey(userId)) {
+                overallNumbers.put(userId, overallNumbers.get(userId) + 1);
+            } else {
+                overallNumbers.put(userId, 1);
+            }
+        }
+        ArrayList<User> users = new ArrayList(data.getUsers().values());
+        Collections.sort(users, new UserMapComparator(overallNumbers));
+        System.out.println("Q6- The following users have overall been passive:");
+        for (int i = 0; i < 5; i++) {
+            System.out.println(users.get(i) + ", - Overall count:" + overallNumbers.get(users.get(i).getId()));
+            
+        }
+        
+        System.out.println("Q7 - The following users have overall been active: ");
+        for (int i = users.size()-1 ; i > users.size()-6; i--) {
+            System.out.println(users.get(i) + ", - overall count:" + overallNumbers.get(users.get(i).getId()));
         }
     }
 }
