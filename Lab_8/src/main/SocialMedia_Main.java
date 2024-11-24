@@ -96,5 +96,7 @@ public class SocialMedia_Main {
         // TODO
         helper.getAverageLikesPerComments();//q1
         helper.getMaxLikeCommentPost(); //q2
+        helper.getPostWithMostComments(); //q3
+
     }
 }
